@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 style="color: aliceblue;">Gallery</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Our Hotel</h2>
+            <img src="hotel.jpg" alt="Hotel Image 1">
+            <img src="hotel.2.jpg" alt="Hotel Image 2" style="display:none;">
+            <img src="hotel3.jpg" alt="Hotel Image 3" style="display:none;">
+            <img src="hotel4.jpg" alt="Hotel Image 4" style="display:none;">
+            <img src="hotel5.jpg" alt="Hotel Image 5" style="display:none;">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+        </section>
+    </main>
+    <footer style="position: fixed;">
+        <p>&copy; 2024 Our Hotel. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentIndex = 0;
+            const images = document.querySelectorAll('img');
+            const totalImages = images.length;
+        
+            function showImage(index) {
+                images.forEach((img, idx) => {
+                    img.style.display = idx === index ? 'block' : 'none';
+                });
+            }
+        
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % totalImages;
+                showImage(currentIndex);
+            }
+        
+            function showPrevImage() {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                showImage(currentIndex);
+            }
+        
+            showImage(currentIndex);
+        
+            document.getElementById('next').addEventListener('click', showNextImage);
+            document.getElementById('prev').addEventListener('click', showPrevImage);
+        });
+        </script>
+        <script src="script.js"></script>
+        
+</body>
+</html>

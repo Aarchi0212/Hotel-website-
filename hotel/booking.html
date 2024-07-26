@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 style="color: aliceblue;">Book a Room</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="form-container">
+            
+            <fieldset >
+                <h2>Booking Form</h2>
+            <form action="booking.php" method="post" >
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="checkin">Check-in Date:</label>
+                <input type="date" id="checkin" name="checkin" required><br>
+                <label for="checkout">Check-out Date:</label>
+                <input type="date" id="checkout" name="checkout" required><br>
+                <label for="roomtype">Room Type:</label>
+                <select id="roomtype" name="roomtype" required>
+                    <option value="deluxe">Deluxe Room</option>
+                    <option value="suite">Suite</option>
+                    <option value="standard">Standard Room</option>
+                </select><br>
+                <button type="submit">Book Now</button>
+            </form>
+        </fieldset>
+        </section>
+    </main>
+    
+    <footer style="position: fixed;">
+        <p>&copy; 2024 Our Hotel. All rights reserved.</p>
+    </footer>
+    <script>
+        
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const checkin = document.getElementById('checkin').value;
+        const checkout = document.getElementById('checkout').value;
+        const roomtype = document.getElementById('roomtype').value;
+
+        if (!name || !email || !checkin || !checkout || !roomtype) {
+            alert('Please fill out all fields');
+            event.preventDefault();
+        } else {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                event.preventDefault();
+            }
+        }
+    });
+});
+
+    </script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
